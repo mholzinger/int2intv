@@ -12,3 +12,6 @@ Map #99 is used to convert the intellivision Executive ROM (CRC32 0xCBCE86F7) to
 To build from source you can use your favorite flavor of the gnu c++ compiler.
 
 Example:  g++ int2intv.cpp -s -static -o int2intv
+
+Build this on Mac OSX: `g++ int2intv.cpp -o int2intv`
+
