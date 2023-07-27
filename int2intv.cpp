@@ -29,14 +29,16 @@ using namespace std;
 #define MAXBUFFER 256
 
 // header details
-unsigned int MapAddress[4] = {0,0,0,0};
-unsigned int DataSize[4] = {0,0,0,0};
+//unsigned int MapAddress[5] = {0,0,0,0,0};
+//unsigned int DataSize[5] = {0,0,0,0,0};
+unsigned int MapAddress[13] = {0,0,0,0,0,0,0,0,0,0,0,0,0};
+unsigned int DataSize[13] = {0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 void PrintHelp(void)
 {
 	cout	<< "\nNT Mini Noir intellivision rom formater v1.2\nCommand Use:  int2intv -m X <input file> <output file>\n"
-			<< "\nSwitches:\n-m X, where X = rom memory map to encode\n";
-			
+		<< "\nSwitches:\n-m X, where X = rom memory map to encode\n";
+
 	exit(1);
 }
 
@@ -62,7 +64,7 @@ void PopulateHeader(int Format)
         MapAddress[1] = 0xD000;
         DataSize[1] = 0x2FFF;
         break;
-        
+
         case 2:
         MapAddress[0] = 0x5000;
         DataSize[0] = 0x2000;
@@ -88,7 +90,7 @@ void PopulateHeader(int Format)
         MapAddress[3] = 0xF000;
         DataSize[3] = 0x1000;
         break;
-        
+
         case 4:
         MapAddress[0] = 0x5000;
         DataSize[0] = 0x2000;
@@ -119,6 +121,148 @@ void PopulateHeader(int Format)
         MapAddress[1] = 0x7000;
         DataSize[1] = 0x1000;
         break;
+
+	// Aardvark (Free)
+	case 10:
+	MapAddress[0] = 0x2100;
+    DataSize[0] = 0x0F00;
+
+    MapAddress[1] = 0x5000;
+    DataSize[1] = 0x1E00;
+
+    MapAddress[2] = 0xA000;
+    DataSize[2] = 0x0F00;
+
+    MapAddress[3] = 0xD000;
+    DataSize[3] = 0x0700;
+
+	MapAddress[4] = 0xF000;
+    DataSize[4] = 0x0F00;
+	break;
+
+	// Meteors! (Free)
+	case 11:
+	MapAddress[0] = 0x5000;
+    DataSize[0] = 0x2000;
+
+    MapAddress[1] = 0xD000;
+    DataSize[1] = 0x0E00;
+
+    MapAddress[2] = 0xF000;
+    DataSize[2] = 0x0D00;
+    break;
+
+	// IntyBASIC Showcase Volume 2 (Free)
+	case 12:
+	MapAddress[0] = 0x4800;
+    DataSize[0] = 0x0700;
+
+	MapAddress[1] = 0x5000;
+    DataSize[1] = 0x2000;
+
+	MapAddress[2] = 0x8800;
+    DataSize[2] = 0x2F00;
+
+	MapAddress[3] = 0xC800;
+    DataSize[3] = 0x2F00;
+	break;
+
+	// D1K Arcade
+	case 13:
+    MapAddress[0] = 0x5000;
+    DataSize[0] = 0x2000;
+
+    MapAddress[1] = 0x9000;
+    DataSize[1] = 0x3000;
+
+    MapAddress[2] = 0xD000;
+    DataSize[2] = 0x1000;
+
+    MapAddress[3] = 0xF000;
+    DataSize[3] = 0x1000;
+    break;
+
+	// Ms. Pac-Man
+	case 14:
+    MapAddress[0] = 0x5000;
+    DataSize[0] = 0x2000;
+
+    MapAddress[1] = 0x8800;
+    DataSize[1] = 0x3000;
+
+    MapAddress[2] = 0xD000;
+    DataSize[2] = 0x3000;
+    break;
+
+	// Pumpkin Master (Demo)
+	case 15:
+    MapAddress[0] = 0x5000;
+    DataSize[0] = 0x1C00;
+
+    MapAddress[1] = 0xF000;
+    DataSize[1] = 0x0B00;
+    break;
+
+	// Oh Mummy!
+	case 16:
+    MapAddress[0] = 0x5000;
+    DataSize[0] = 0x1D00;
+    break;
+
+	// Princess Quest
+	case 17:
+	MapAddress[0] = 0x2100;
+    DataSize[0] = 0x0F00;
+
+    MapAddress[1] = 0x4800;
+    DataSize[1] = 0x2800;
+
+    MapAddress[2] = 0xA000;
+    DataSize[2] = 0x1F00;
+
+    MapAddress[3] = 0xC100;
+    DataSize[3] = 0x3F00;
+	break;
+
+	// Space Patrol is mapper 0
+
+	// Space Raid
+        case 18:
+        MapAddress[0] = 0x5000;
+        DataSize[0] = 0x1F00;
+        break;
+
+	// Stack 'Em! (broken?)
+        case 19:
+        MapAddress[0] = 0x4800;
+        DataSize[0] = 0x0800;
+        break;
+
+	case 20: // IntelliVania (Demo)
+        MapAddress[0] = 0x4800;
+        DataSize[0] = 0x0500;
+        MapAddress[1] = 0x5000;
+        DataSize[1] = 0x1E00;
+        MapAddress[2] = 0x7100;
+        DataSize[2] = 0x1200;
+        MapAddress[3] = 0xA000;
+        DataSize[3] = 0x0E00;
+        MapAddress[4] = 0xC000;
+        DataSize[4] = 0x2200;
+	break;
+
+	case 21: // IntelliVania (Full)
+        MapAddress[0] = 0x2100;
+        DataSize[0] = 0x0F00;
+        MapAddress[1] = 0x4800;
+        DataSize[1] = 0x2800;
+        MapAddress[2] = 0x7100;
+        DataSize[2] = 0x0F00;
+        MapAddress[3] = 0x8800;
+        DataSize[3] = 0x2F00;
+        MapAddress[4] = 0xC800;
+        DataSize[4] = 0x3800;
+	break;
 
         case 99:
         MapAddress[0] = 0x1000;
@@ -294,7 +438,12 @@ int main(int argc, char* argv[])
         goto endblock;
 
 // fourth block
-    headerSize = readSize;
+    if(readSize > DataSize[3])
+        headerSize = DataSize[3];
+    else
+        headerSize = readSize;
+
+     readSize -= headerSize;
 
     //write header
     outputFile.write((const char *) &MapAddress[3], sizeof(unsigned int)); // write address
@@ -307,6 +456,35 @@ int main(int argc, char* argv[])
         if(--headerSize == 0)
             break;
     }
+
+    if(readSize == 0)
+        goto endblock;
+
+// fifth block
+    if(readSize > DataSize[4])
+        headerSize = DataSize[4];
+    else
+        headerSize = readSize;
+
+     readSize -= headerSize;
+
+    //write header
+    outputFile.write((const char *) &MapAddress[4], sizeof(unsigned int));
+
+    // write address
+    outputFile.write((const char *) &headerSize, sizeof(unsigned int)); // write size
+
+
+    //write data
+    while(inputFile.read(inputBuffer, wordsize))
+    {
+        outputFile.write(inputBuffer, wordsize);
+        if(--headerSize == 0)
+            break;
+    }
+
+    if(readSize == 0)
+        goto endblock;
 
 endblock:
 // end block
@@ -321,3 +499,4 @@ endblock:
     unlink(tempFileName);
     return 0;
 }
+
