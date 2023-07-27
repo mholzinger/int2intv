@@ -50,6 +50,8 @@ MapAddress[3] = 0xC100;
 DataSize[3] = 0x3F00;
 ```
 
+Documentation on the INTV2 format is here:
+https://github.com/SmokeMonsterPacks/Nt-Mini-Noir-Jailbreak#intellivision-core-release-notes
 
 ---
 
